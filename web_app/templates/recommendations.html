@@ -21,22 +21,102 @@
     <link href="static/css/business-casual.min.css" rel="stylesheet">
 
   </head>
+  <style>
+  .table {
+  color:white;
+  background-color: #3733FF;
+  font-size: 13px;
+  }
+  .title {
+  text-align: center;
+  color:white;
+  }
+  .move-button {
+    display: flex;
+    justify-content: center;
+    margin-top: .7vw;
+  }
 
+  body{
+    background-image: url('https://cdn-images-1.medium.com/max/2000/1*YMrnR5kQ_R602fbWHHWy2g.jpeg');
+    width:100%;
+   background-size: cover;
+  }
+  @media only screen and (max-width: 600px) {
+      body {
+          background-size: auto;
+      }
+  }
+  </style>
 
+  <body>
 
-  <table class=table>
-    <tr>
-    {% for col in results_df.columns %}
-    <th><center>{{col}}</center></th>
-    {% endfor %}
-    <th><center>Today's Trail Info (link)</center></th>
-    </tr>
-    {% for _, row in results_df.iloc[:].iterrows() %}
-    <tr>
-      {% for entry in row %}
-      <td><center>{{ entry }}</center></td>
-      {% endfor %}
-      <td><center><a href="{{links[row.Resort][1]}}"><img src={{links[row.Resort][0]}} height="100px" width="200px"></a></center></td>
-    </tr>
-    {% endfor %}
-  </table>
+    <h1 class="site-heading text-center bg-info text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary mb-3">Your style, your music</span>
+      <span style="font-weight: bold;font-size: 60px; color:red" class="site-heading-lower">The Recommender</span>
+    </h1>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+            </li>
+            <li class="nav-item active px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="products.html">Perception-Driven Recommender</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">Spotify-account driven Recommender</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <table style="text-transform:lowercase; color:white" class="table">
+      <thead>
+        <th>Song Name</th>
+        <th>Album</th>
+        <th>Artist</th>
+        <th>Preview URL</th>
+        <th>Track ID</th>
+
+      </thead>
+      <tbody>
+        <!-- Here is where the data passed into the template gets inserted -->
+        {% for row_index in range(data['Song_name']|count) %}
+            <tr>
+              <td>{{ data['Song_name'][row_index]|tojson|safe }}</td>
+              <td>{{ data['Album'][row_index] }}</td>
+              <td>{{ data['Artists'][row_index] }}</td>
+              <td><a href={{ data['Preview_link'][row_index] }}>{{ data['Preview_link'][row_index] }}</a></td>
+              <td>{{ data['Track_id'][row_index] }}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <footer class="footer bg-info text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

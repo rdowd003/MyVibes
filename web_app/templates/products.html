@@ -94,9 +94,11 @@
                 <span style="font-size: 40px" align="center" class="section-heading-lower">Choose your cluster</span>
                 <p style="font-size: 15px" class="my_p"> First, click each of the links below, one at a time, and preview all of the the songs.
                   Listen closely, not for your favorite artist, or your favorite song, but for a style, rhythm and sense of musicality that you feel a strong connection with.
-                  Then proceed to step 2 below. Either click links to listen, and hit back-page button or open each link in new web page to listen.</p>
+                  Either click links to listen, and hit back-page button to continue, or open each link in new web page to listen.
+                  Then proceed to the section below to make your choices. </p>
             <table style="text-transform: lowercase" class="table">
               <thead>
+                <th>Cluster Number</th>
                 <th>Song Name</th>
                 <th>Artist</th>
                 <th>Preview URL</th>
@@ -107,8 +109,9 @@
                 <!-- Here is where the data passed into the template gets inserted -->
                 {% for row_index in range(data['Track_id']|count) %}
                     <tr>
-                      <td>{{ data['titles'][row_index]|tojson|safe }}</td>
-                      <td>{{ data['artists'][row_index] }}</td>
+                      <td>{{ data['cluster_labels'][row_index]|tojson|safe }}</td>
+                      <td>{{ data['titles'][row_index] }}</td>
+                      <td>{{ data['artists_list'][row_index] }}</td>
                       <td><a href={{ data['previews'][row_index] }}>{{ data['previews'][row_index] }}</a></td>
                       <td>{{ data['Track_id'][row_index] }}</td>
                     </tr>
@@ -132,52 +135,60 @@
             <div class="col-xl-9 col-lg-10 mx-auto">
               <div class="bg-success rounded p-5">
                 <h2 class="section-heading mb-4">
-                  <span style"font-size: 25px" class="section-heading-middle">Chosen a Cluster? Step2:</span>
-                  <span style"font-size: 30px" class="section-heading-lower">Select an audio-feature priority</span>
+                  <span style"font-size: 25px" class="section-heading-middle">Figured out which one you like?</span>
+                  <p class="empty"> </p>
+                  <span style"font-size: 15px" class="section-heading-upper">Select that cluster and an audio-feature priority below!</span>
                 </h2>
-                <p style="font-size: 15px" class="my_p">Explanation about differences between cognition and account driven recommender</p>
+                <p class="empty"> </p>
+                <form action='/recommendations', method='POST'>
+                  <div><h4><b>Step 1: Choose a cluster.</b></h4></div>
+                  <select name="cluster" class="selectpicker form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                  <p class="empty"> </p>
+                  <p class="empty"> </p>
+                  <div><h4><b>Step 2: Choose an audio feature to prioritize</b></h4></div>
+                  <select name="feature" class="selectpicker form-control">
+                    <option value="acousticness">Acoustiness</option>
+                    <option value="danceability">Danceability</option>
+                    <option value="energy">Energy</option>
+                    <option value="instrumentalness">Instrumentalness</option>
+                    <option value="liveness">Liveness</option>
+                    <option value="loudness">Loudness</option>
+                    <option value="mode">Mode (major/minor)</option>
+                    <option value="speechiness">Speechiness</option>
+                    <option value="tempo">Tempo</option>
+                    <option value="valence">Valence (positivity)</option>
+                  </select>
+                  <div><h4><b>Step 3: High or Low for the selected priority</b></h4></div>
+                  <select name="level" class="selectpicker form-control">
+                    <option value="high">High</option>
+                    <option value="low">Low</option>
+                  </select>
+                  <div class='move-button'>
+                    <button type="submit">Recommend</button>
+                  </div>
+                </form>
                 <p class="empty"> </p>
               </div>
-              <p class="empty"> </p>
-              <div class="dropdown">
-                <button class="btn btn-secondary bg-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select your favorite cluster (song)!
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="products.html">1</a>
-                  <a class="dropdown-item" href="products.html">2</a>
-                  <a class="dropdown-item" href="products.html">3</a>
-                  <a class="dropdown-item" href="products.html">4</a>
-                  <a class="dropdown-item" href="products.html">5</a>
-                  <a class="dropdown-item" href="products.html">6</a>
-                  <a class="dropdown-item" href="products.html">7</a>
-                  <a class="dropdown-item" href="products.html">8</a>
-                  <a class="dropdown-item" href="products.html">9</a>
-                  <a class="dropdown-item" href="products.html">10</a>
-              </div>
-              <p class="empty"> </p>
-              <div class="my_dropdown">
-                <button class="btn bg-warning btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Choose your audio feature priority!
-                </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="products.html">Acoustiness</a>
-                    <a class="dropdown-item" href="products.html">Danceability</a>
-                    <a class="dropdown-item" href="products.html">Energy</a>
-                    <a class="dropdown-item" href="products.html">Instrumentalness</a>
-                    <a class="dropdown-item" href="products.html">Liveness</a>
-                    <a class="dropdown-item" href="products.html">Loudness</a>
-                    <a class="dropdown-item" href="products.html">Mode (major/minor)</a>
-                    <a class="dropdown-item" href="products.html">Speechiness</a>
-                    <a class="dropdown-item" href="products.html">Tempo</a>
-                    <a class="dropdown-item" href="products.html">Valence (positivity)</a>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+
+
 
     <footer class="footer bg-info text-faded text-center py-5">
       <div class="container">

@@ -39,40 +39,43 @@ AF_with_id['labels'] = labels
 
 #RECOMMENDING!
 
-'''
-!!!! Cluster choice Dataframe has been pickled - do not need to uncomment unless to change songs !!!!
+
+#!!!! Cluster choice Dataframe has been pickled - do not need to uncomment unless to change songs !!!!
 
 #1) Choose k (number of clusters = 28) random tracks for choice
 
 cluster_ids = []
 titles = []
-artists = []
+artists_list = []
 urls = []
+cluster_labels = []
 
 temp = track_info.copy()
 
 #go through all possible labels, select a random song, one from each cluster
 for i in set(labels):
+    cluster_labels.append(str(i+1))
     new_temp = temp[temp['labels']==i]
     c = np.random.choice(new_temp['id'],size=1)[0]
 
     while list(track_info['preview_url'][track_info['id']== c])[0] is None:
         c = np.random.choice(new_temp['id'],size=1)[0]
-    rec_track_ids.append(c)
+    cluster_ids.append(c)
     title = list(track_info['name'][track_info['id']== c])[0]
     titles.append(title)
     artist = track_info['artist_name'][track_info['id']== c].iloc[0][0]['name']
-    artists.append(track_info['artist_name'][track_info['id']== c])
+    artists_list.append(artist)
     url = list(track_info['preview_url'][track_info['id']==c])[0]
     urls.append(url)
 
 
-df = pd.DataFrame(cluster_ids,columns=['Track_id'])
+df = pd.DataFrame(cluster_labels,columns=['cluster_labels'])
+df['Track_id'] = cluster_ids
 df['titles'] = titles
-df['artists'] = artists
+df['artists_list'] = artists_list
 df['previews'] = urls
 
-#df.to_pickle('../data/big_popular2.pkl')
+df.to_pickle('../data/big_popular3.pkl')
 
 '''
 
@@ -122,3 +125,5 @@ rec_df['Preview link'] = rec_previews
 rec_df['Track_id'] = rec_ids
 
 print(rec_df.head())
+
+'''
