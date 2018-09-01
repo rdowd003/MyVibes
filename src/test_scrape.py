@@ -1,4 +1,4 @@
-# Get data
+#test
 import pandas as pd
 import spotipy
 import os
@@ -80,12 +80,16 @@ client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTI
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 sp.trace=False
 
-playlists_to_scrape = [("whitneypenn", "spotify:user:whitneypenn:playlist:44sRyzuMuFwNUGq6otEvGG")]
+def get_data():
+    playlists_to_scrape = [("captain25", "spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL")]
 
-a = scrape_playlist(playlists_to_scrape[0])
-if len(playlists_to_scrape) > 0:
-    for i in range(1, len(playlists_to_scrape)):
-        a = a.append(scrape_playlist(playlists_to_scrape[i]))
+    a = scrape_playlist(playlists_to_scrape[0])
+    if len(playlists_to_scrape) > 0:
+        for i in range(1, len(playlists_to_scrape)):
+            a = a.append(scrape_playlist(playlists_to_scrape[i]))
 
+    return a
 
-a.to_csv('~/Galvanize/analytics-capstone/data/unseen_data.csv')
+df = get_data()
+
+#a.to_csv('~/Galvanize/analytics-capstone/data/unseen_data.csv')

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Business Casual - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/business-casual.min.css" rel="stylesheet">
+
+  </head>
+  <style>
+  .table {
+  color:white;
+  background-color: #3733FF;
+  font-size: 13px;
+  }
+  .title {
+  text-align: center;
+  color:white;
+  }
+  .move-button {
+    display: flex;
+    justify-content: center;
+    margin-top: .7vw;
+  }
+
+  body{
+    background-image: url('https://cdn-images-1.medium.com/max/2000/1*YMrnR5kQ_R602fbWHHWy2g.jpeg');
+    width:100%;
+   background-size: cover;
+  }
+  @media only screen and (max-width: 600px) {
+      body {
+          background-size: auto;
+      }
+  }
+  </style>
+
+  <body>
+
+    <h1 class="site-heading text-center bg-info text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary mb-3">Your style, your music</span>
+      <span style="font-weight: bold;font-size: 60px; color:red" class="site-heading-lower">The Recommender</span>
+    </h1>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+            </li>
+            <li class="nav-item active px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="products.html">Perception-Driven Recommender</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">Spotify-account driven Recommender</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-success p-5 d-flex w-100 rounded">
+              <h2 class="section-heading mb-0">
+                <span style="font-size: 30px" align="center" class="section-heading-upper">Step 1:</span>
+                <span style="font-size: 40px" align="center" class="section-heading-lower">Choose your cluster</span>
+                <p style="font-size: 15px" class="my_p"> First, click each of the links below, one at a time, and preview all of the the songs.
+                  Listen closely, not for your favorite artist, or your favorite song, but for a style, rhythm and sense of musicality that you feel a strong connection with.
+                  Then proceed to step 2 below. Either click links to listen, and hit back-page button or open each link in new web page to listen.</p>
+            <table style="text-transform: lowercase" class="table">
+              <thead>
+                <th>Song Name</th>
+                <th>Artist</th>
+                <th>Preview URL</th>
+                <th>Track ID</th>
+
+              </thead>
+              <tbody>
+                <!-- Here is where the data passed into the template gets inserted -->
+                {% for row_index in range(data['Track_id']|count) %}
+                    <tr>
+                      <td>{{ data['titles'][row_index]|tojson|safe }}</td>
+                      <td>{{ data['artists'][row_index] }}</td>
+                      <td><a href={{ data['previews'][row_index] }}>{{ data['previews'][row_index] }}</a></td>
+                      <td>{{ data['Track_id'][row_index] }}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+              </h2>
+            </div>
+          </div>
+          <div align="center" class="product-item-description d-flex mr-auto">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section about-heading">
+      <div class="container">
+        <img class="rounded mx-auto d-block" alt="..." src="static/img/brain_waves.jpg">
+        <div class="about-heading-content text-center">
+          <div class="row">
+            <div class="col-xl-9 col-lg-10 mx-auto">
+              <div class="bg-success rounded p-5">
+                <h2 class="section-heading mb-4">
+                  <span style"font-size: 25px" class="section-heading-middle">Chosen a Cluster? Step2:</span>
+                  <span style"font-size: 30px" class="section-heading-lower">Select an audio-feature priority</span>
+                </h2>
+                <p style="font-size: 15px" class="my_p">Explanation about differences between cognition and account driven recommender</p>
+                <p class="empty"> </p>
+              </div>
+              <p class="empty"> </p>
+              <div class="dropdown">
+                <button class="btn btn-secondary bg-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select your favorite cluster (song)!
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="products.html">1</a>
+                  <a class="dropdown-item" href="products.html">2</a>
+                  <a class="dropdown-item" href="products.html">3</a>
+                  <a class="dropdown-item" href="products.html">4</a>
+                  <a class="dropdown-item" href="products.html">5</a>
+                  <a class="dropdown-item" href="products.html">6</a>
+                  <a class="dropdown-item" href="products.html">7</a>
+                  <a class="dropdown-item" href="products.html">8</a>
+                  <a class="dropdown-item" href="products.html">9</a>
+                  <a class="dropdown-item" href="products.html">10</a>
+              </div>
+              <p class="empty"> </p>
+              <div class="my_dropdown">
+                <button class="btn bg-warning btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Choose your audio feature priority!
+                </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="products.html">Acoustiness</a>
+                    <a class="dropdown-item" href="products.html">Danceability</a>
+                    <a class="dropdown-item" href="products.html">Energy</a>
+                    <a class="dropdown-item" href="products.html">Instrumentalness</a>
+                    <a class="dropdown-item" href="products.html">Liveness</a>
+                    <a class="dropdown-item" href="products.html">Loudness</a>
+                    <a class="dropdown-item" href="products.html">Mode (major/minor)</a>
+                    <a class="dropdown-item" href="products.html">Speechiness</a>
+                    <a class="dropdown-item" href="products.html">Tempo</a>
+                    <a class="dropdown-item" href="products.html">Valence (positivity)</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer bg-info text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

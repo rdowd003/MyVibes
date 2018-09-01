@@ -1,0 +1,71 @@
+{
+  "_from": "startbootstrap-business-casual",
+  "_id": "startbootstrap-business-casual@4.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-Ik02tZ1gAgBkWiDeKQrLiiWE5gjsSH2eoJgYpgiusf5jMueWANE4rSiynmfnClr4v7lFn6DxmSmDhBMY2UqTDA==",
+  "_location": "/startbootstrap-business-casual",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "startbootstrap-business-casual",
+    "name": "startbootstrap-business-casual",
+    "escapedName": "startbootstrap-business-casual",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/startbootstrap-business-casual/-/startbootstrap-business-casual-4.1.1.tgz",
+  "_shasum": "1806a72a937166c5c2d61a0ef810d4dca41de47e",
+  "_spec": "startbootstrap-business-casual",
+  "_where": "/Users/robertdowd/Galvanize/Capstone-3/web_app",
+  "author": {
+    "name": "Start Bootstrap"
+  },
+  "bugs": {
+    "url": "https://github.com/BlackrockDigital/startbootstrap-business-casual/issues",
+    "email": "feedback@startbootstrap.com"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "David Miller",
+      "url": "http://davidmiller.io/"
+    }
+  ],
+  "dependencies": {
+    "bootstrap": "4.1.1",
+    "jquery": "3.3.1"
+  },
+  "deprecated": false,
+  "description": "A casual HTML website theme for businesses built with Bootstrap",
+  "devDependencies": {
+    "browser-sync": "2.24.5",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "3.9.4",
+    "gulp-header": "2.0.5",
+    "gulp-rename": "1.3.0",
+    "gulp-sass": "4.0.1"
+  },
+  "homepage": "https://startbootstrap.com/template-overviews/business-casual",
+  "keywords": [
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "theme",
+    "template"
+  ],
+  "license": "MIT",
+  "name": "startbootstrap-business-casual",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlackrockDigital/startbootstrap-business-casual.git"
+  },
+  "title": "Business Casual",
+  "version": "4.1.1"
+}
