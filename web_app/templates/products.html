@@ -38,7 +38,7 @@
   }
 
   body{
-    background-image: url('https://cdn-images-1.medium.com/max/2000/1*YMrnR5kQ_R602fbWHHWy2g.jpeg');
+    background-image: url('https://www.thoughtco.com/thmb/pkr30tzETK_9ovzXGyBXlNz9Ou4=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-172646826-57dd5dbc5f9b586516e37e4c.jpg');
     width:100%;
    background-size: cover;
   }
@@ -52,8 +52,8 @@
   <body>
 
     <h1 class="site-heading text-center bg-info text-white d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">Your style, your music</span>
-      <span style="font-weight: bold;font-size: 60px; color:red" class="site-heading-lower">The Recommender</span>
+      <span style="color:danger" class="site-heading-upper mb-3">Your style, your music</span>
+      <span style="font-weight: bold;font-size: 60px; color:danger" class="site-heading-lower">The Recommender</span>
     </h1>
 
     <!-- Navigation -->
@@ -91,7 +91,7 @@
             <div class="bg-success p-5 d-flex w-100 rounded">
               <h2 class="section-heading mb-0">
                 <span style="font-size: 30px" align="center" class="section-heading-upper">Step 1:</span>
-                <span style="font-size: 40px" align="center" class="section-heading-lower">Choose your cluster</span>
+                <span style="font-size: 40px" align="center" class="section-heading-lower">Experience the clusters</span>
                 <p style="font-size: 15px" class="my_p"> First, click each of the links below, one at a time, and preview all of the the songs.
                   Listen closely, not for your favorite artist, or your favorite song, but for a style, rhythm and sense of musicality that you feel a strong connection with.
                   Either click links to listen, and hit back-page button to continue, or open each link in new web page to listen.
@@ -135,13 +135,13 @@
             <div class="col-xl-9 col-lg-10 mx-auto">
               <div class="bg-success rounded p-5">
                 <h2 class="section-heading mb-4">
-                  <span style"font-size: 25px" class="section-heading-middle">Figured out which one you like?</span>
-                  <p class="empty"> </p>
-                  <span style"font-size: 15px" class="section-heading-upper">Select that cluster and an audio-feature priority below!</span>
+                  <span style="font-size:30px" class="section-heading-middle">Step 2:</span>
+                  <span style="font-size:40px" class="section-heading-lower"> Choose Your preferences</span>
+                  <p style="font-size: 15px" class="my_p">Select the cluster and some recommendation preferences below to receive new song recommendations </p>
                 </h2>
                 <p class="empty"> </p>
                 <form action='/recommendations', method='POST'>
-                  <div><h4><b>Step 1: Choose a cluster.</b></h4></div>
+                  <div><h4><b>Select a cluster:</b></h4></div>
                   <select name="cluster" class="selectpicker form-control">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -156,7 +156,7 @@
                   </select>
                   <p class="empty"> </p>
                   <p class="empty"> </p>
-                  <div><h4><b>Step 2: Choose an audio feature to prioritize</b></h4></div>
+                  <div><h4><b>Select an audio feature to prioritize:</b></h4></div>
                   <select name="feature" class="selectpicker form-control">
                     <option value="acousticness">Acoustiness</option>
                     <option value="danceability">Danceability</option>
@@ -169,10 +169,17 @@
                     <option value="tempo">Tempo</option>
                     <option value="valence">Valence (positivity)</option>
                   </select>
-                  <div><h4><b>Step 3: High or Low for the selected priority</b></h4></div>
-                  <select name="level" class="selectpicker form-control">
+                  <p class="empty"> </p>
+                  <div><h4><b>High or Low for the selected priority:</b></h4></div>
+                  <select name="popular" class="selectpicker form-control">
                     <option value="high">High</option>
                     <option value="low">Low</option>
+                  </select>
+                  <p class="empty"> </p>
+                  <div><h4><b>Select your song-recommendation popularity preference:</b></h4></div>
+                  <select name="level" class="selectpicker form-control">
+                    <option value="high">More popular</option>
+                    <option value="low">Less popular</option>
                   </select>
                   <div class='move-button'>
                     <button type="submit">Recommend</button>

@@ -96,7 +96,7 @@ class SpotifyPlaylist:
         return df
 
     def get_data(self):
-        playlists_to_scrape = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9")]
+        playlists_to_scrape = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9"),("captain25","spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL")]
 
         a = self.scrape_playlist(playlists_to_scrape[0])
         if len(playlists_to_scrape) > 0:
@@ -121,8 +121,10 @@ class CleanData:
     def make_df(self):
         if not filepath:
             self.df = self.pulled_df
+            self.df.drop_duplicates(subset='id')
         else:
             self.df = pd.read_csv(self.filepath)
+            self.df.drop_duplicates(subset='id')
 
     def add_local_id(self):
         self.df['local_id']= self.pulled_df.index
@@ -177,16 +179,15 @@ client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTI
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 sp.trace=False
 
-'''
+
 playlist = SpotifyPlaylist()
 df_unclean = playlist.get_data()
 df_clean = CleanData(df_unclean)
-df_clean.add_local_id()
 audio_feats,track_info = df_clean.features()
 
 
 
-
+'''
 ("captain25", "spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL")
 spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9
 '''

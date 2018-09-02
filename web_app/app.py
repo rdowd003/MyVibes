@@ -54,19 +54,25 @@ def song_recs():
     song_pref = int(request.form['cluster'])
     priority = str(request.form['feature'])
     level = str(request.form['level'])
+    desired_pop = str(request.form['popular'])
     if song_pref == '':
         return 'You must select a cluster.'
     if priority == '':
         return 'You must select an audio feature.'
     else:
         AF_filtered = AF_with_id[AF_with_id['labels'] == song_pref]
-        AF_filtered.sort_values(by=['popularity'],ascending=False,inplace=True)
+        #AF_filtered.sort_values(by=['popularity'],ascending=False,inplace=True)
+        avg_pop = AF_filtered['popularity'].mean()
         avg = AF_filtered[priority].mean()
         if level == 'high':
             AF_filtered_feature_choice = AF_filtered[AF_filtered[priority]>=avg]
         elif level == 'low':
             AF_filtered_feature_choice = AF_filtered[AF_filtered[priority]<avg]
 
+        if desired_pop == 'high':
+            AF_filtered_feature_choice = AF_filtered_feature_choice[AF_filtered_feature_choice['popularity']>=avg_pop]
+        elif desired_pop == 'low':
+            AF_filtered_feature_choice = AF_filtered_feature_choice[AF_filtered_feature_choice['popularity']<avg_pop]
         rec_ids = []
         rec_titles = []
         rec_albums = []

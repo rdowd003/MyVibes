@@ -38,7 +38,7 @@
   }
 
   body{
-    background-image: url('https://cdn-images-1.medium.com/max/2000/1*YMrnR5kQ_R602fbWHHWy2g.jpeg');
+    background-image: url('https://www.thoughtco.com/thmb/pkr30tzETK_9ovzXGyBXlNz9Ou4=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-172646826-57dd5dbc5f9b586516e37e4c.jpg');
     width:100%;
    background-size: cover;
   }
@@ -52,8 +52,8 @@
   <body>
 
     <h1 class="site-heading text-center bg-info text-white d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">Your style, your music</span>
-      <span style="font-weight: bold;font-size: 60px; color:red" class="site-heading-lower">The Recommender</span>
+      <span style="color:danger" class="site-heading-upper mb-3">Your style, your music</span>
+      <span style="font-weight: bold;font-size: 60px; color:danger" class="site-heading-lower">The Recommender</span>
     </h1>
 
     <!-- Navigation -->
@@ -101,7 +101,7 @@
               <td>{{ data['Album'][row_index] }}</td>
               <td>{{ data['Artists'][row_index] }}</td>
               <td><a href={{ data['Preview_link'][row_index] }}>{{ data['Preview_link'][row_index] }}</a></td>
-              <td>{{ data['Track_id'][row_index] }}</td>
+              <td><a href={{'http://www.open.spotify.com/track/'+ data['Track_id'][row_index] }}>{{ data['Track_id'][row_index] }}</a></td>
             </tr>
         {% endfor %}
       </tbody>

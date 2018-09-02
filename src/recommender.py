@@ -39,7 +39,7 @@ AF_with_id['labels'] = labels
 
 #RECOMMENDING!
 
-
+'''
 #!!!! Cluster choice Dataframe has been pickled - do not need to uncomment unless to change songs !!!!
 
 #1) Choose k (number of clusters = 28) random tracks for choice
@@ -77,12 +77,9 @@ df['previews'] = urls
 
 df.to_pickle('../data/big_popular3.pkl')
 
-'''
 
-#ALL OF THIS HA TO GO IN App.py ONCE I FIGURE OUT HOW TO GET RESPONSES TO
-#NEXT PAGE
 
-# SO I WILL NEED TO PICKLE AF_with_id, track_info, BOTH WITH LABELS
+#EXECUTED IN App.py FOR FLASK DEPLOYMENT
 
 #User chooses cluster
 #song_pref = input('Which song (1-10) did you enjoy the most? ') from flask

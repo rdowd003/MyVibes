@@ -21,12 +21,31 @@
     <link href="static/css/business-casual.min.css" rel="stylesheet">
 
   </head>
+  <style>
+
+  .move-button {
+    display: flex;
+    justify-content: center;
+    margin-top: .7vw;
+  }
+
+  body{
+    background-image: url('https://www.thoughtco.com/thmb/pkr30tzETK_9ovzXGyBXlNz9Ou4=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-172646826-57dd5dbc5f9b586516e37e4c.jpg');
+    width:100%;
+   background-size: cover;
+  }
+  @media only screen and (max-width: 600px) {
+      body {
+          background-size: auto;
+      }
+  }
+  </style>
 
   <body>
 
-    <h1 class="site-heading text-center text-white d-none d-lg-block">
-      <span class="site-heading-upper text-primary mb-3">Your style, your music</span>
-      <span style="font-weight: bold;font-size: 60px; color:red" class="site-heading-lower">The Recommender</span>
+    <h1 class="site-heading text-center bg-info text-white d-none d-lg-block">
+      <span style="color:danger" class="site-heading-upper mb-3">Your style, your music</span>
+      <span style="font-weight: bold;font-size: 60px; color:danger" class="site-heading-lower">The Recommender</span>
     </h1>
 
     <!-- Navigation -->
@@ -39,18 +58,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item px-lg-4">
-              <a style="color: blue" class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="index.html">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a style="color: blue" class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="about.html">About</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a style="color: blue" class="nav-link text-uppercase text-expanded" href="products.html">Perception-Driven Recommender</a>
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="products.html">Perception-Driven Recommender</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a style="color: blue" class="nav-link text-uppercase text-expanded" href="store.html">Spotify-account driven Recommender</a>
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">Spotify-account driven Recommender</a>
             </li>
           </ul>
         </div>
