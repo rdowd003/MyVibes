@@ -77,14 +77,14 @@
               <a style="color: white" class="nav-link text-uppercase text-expanded" href="products.html">recommendations</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">About the author</a>
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">About me</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <table style="text-transform:lowercase; color:white" class="table">
+    <table style="color:white" class="table">
       <thead>
         <th>Song Name</th>
         <th>Album</th>
@@ -101,7 +101,7 @@
               <td>{{ data['Album'][row_index] }}</td>
               <td>{{ data['Artists'][row_index] }}</td>
               <td><a href={{ data['Preview_link'][row_index] }}>{{ data['Preview_link'][row_index] }}</a></td>
-              <td><a href={{'http://www.open.spotify.com/track/'+ data['Track_id'][row_index] }}>{{ data['Track_id'][row_index] }}</a></td>
+              <td><a href={{'https://open.spotify.com/search/recent' }}>{{ "Click to search spotify" }}</a></td>
             </tr>
         {% endfor %}
       </tbody>

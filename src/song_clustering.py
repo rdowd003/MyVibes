@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.decomposition import PCA
+from pyspark.mllib.clustering import KMeans
 
 
 def standardize(raw_df):
@@ -87,7 +88,7 @@ df.add_local_id() #using this to make my own track id, for now (not used  yet)
 AF,track_info = df.features()
 
 '''
-'''
+
 sp = spotipy.Spotify()
 from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY'), client_secret=os.getenv('SPOTIFY_SECRET_KEY'))
@@ -98,6 +99,9 @@ playlist = SpotifyPlaylist()
 df_unclean = playlist.get_data()
 df_clean = CleanData(df_unclean)
 AF,track_info = df_clean.features()
+popularity = AF.pop('popularity')
+ids = AF.drop('id')
+
 
 #Standardize and Reduce (with PCA) raw audio features
 
@@ -113,24 +117,22 @@ n_comps = AF_std_reduced.shape[1]
 scree_plot(ax1,pca,n_comps)
 elbow_plot(ax2,AF_std,1,50,2)
 plt.tight_layout()
-plt.show()
-'''
+plt.savefig('../data/elbow_scree.png')
+
 
 
 # Single K-Means with optimal #PC's and optimal K
-#n_clusters = 10
-#x_df_label,labels,centers = run_optimal_kmeans(AF_std_reduced,n_clusters)
+n_clusters = 10
+x_df_label,labels,centers = run_optimal_kmeans(AF_std_reduced,n_clusters)
 
-'''
+AF_STD_reduced['labels'] = labels
+
 #Plot clusters
 fig = plt.figure()
 ax = fig.add_subplot(111)
-scatter = ax.scatter(X_reduced[:,0], X_reduced[:, 1], c=labels, s=50, cmap='viridis')
+scatter = ax.scatter(AF_STD_reduced[:,0], AF_STD_reduced[:, 1], c=labels, s=50, cmap='viridis')
 ax.set_title('Librosa K-Means Clustering (k=5, n_pc = 6)')
 ax.set_xlabel('PC1')
 ax.set_ylabel('PC2')
 plt.colorbar(scatter)
 plt.show()
-
-
-'''

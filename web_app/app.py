@@ -73,6 +73,8 @@ def song_recs():
             AF_filtered_feature_choice = AF_filtered_feature_choice[AF_filtered_feature_choice['popularity']>=avg_pop]
         elif desired_pop == 'low':
             AF_filtered_feature_choice = AF_filtered_feature_choice[AF_filtered_feature_choice['popularity']<avg_pop]
+        elif desired_pop == 'random':
+            AF_filtered_feature_choice = AF_filtered_feature_choice
         rec_ids = []
         rec_titles = []
         rec_albums = []
@@ -81,9 +83,9 @@ def song_recs():
 
         #Pick top 3 songs based on popularity
 
-        x = AF_filtered_feature_choice[0:3]
-        for index, row in x.iterrows():
-            track_ids = row['id']
+
+        for i in range(3):
+            track_ids = np.random.choice(AF_filtered_feature_choice['id'],size=1,replace=False)[0]
             rec_ids.append(track_ids)
             title = list(track_info['name'][track_info['id']== track_ids])[0]
             rec_titles.append(title)
@@ -94,6 +96,7 @@ def song_recs():
             preview = list(track_info['preview_url'][track_info['id'] == track_ids])[0]
             rec_previews.append(preview)
 
+
         rec_titles_clean = []
         for i in rec_titles:
             rec_titles_clean.append(unidecode(i))
@@ -102,7 +105,6 @@ def song_recs():
         rec_df['Artists'] = rec_artists
         rec_df['Preview_link'] = rec_previews
         rec_df['Track_id'] = rec_ids
-
 
         return render_template('recommendations.html',data=rec_df)
 

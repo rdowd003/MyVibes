@@ -96,12 +96,11 @@ class SpotifyPlaylist:
         return df
 
     def get_data(self):
-        playlists_to_scrape = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9"),("captain25","spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL")]
-
-        a = self.scrape_playlist(playlists_to_scrape[0])
-        if len(playlists_to_scrape) > 0:
-            for i in range(1, len(playlists_to_scrape)):
-                a = a.append(self.scrape_playlist(playlists_to_scrape[i]))
+        playlists = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9")]
+        a = self.scrape_playlist(playlists[0])
+        if len(playlists) > 0:
+            for i in range(1, len(playlists)):
+                a = a.append(self.scrape_playlist(playlists[i]))
 
         return a
 
@@ -179,17 +178,31 @@ client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTI
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 sp.trace=False
 
+playlist1 = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9")]
+playlist2 = [("captain25","spotify:user:captain25:playlist:5ESaZ4UkktzZuDL2DTzvxe")]
+
 
 playlist = SpotifyPlaylist()
 df_unclean = playlist.get_data()
 df_clean = CleanData(df_unclean)
 audio_feats,track_info = df_clean.features()
 
-
+'''
+playlist2 = SpotifyPlaylist()
+df_unclean2 = playlist.get_data(playlist2)
+df_clean2 = CleanData(df_unclean2)
+audio_feats2,track_info2 = df_clean.features()
 
 '''
+
+
+
+#playlists_to_scrape = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9"),("captain25","spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL"),("captain25","spotify:user:captain25:playlist:5ESaZ4UkktzZuDL2DTzvxe")]
+
 ("captain25", "spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL")
-spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9
+#spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9
 '''
 
+"captain25","spotify:user:captain25:playlist:5ESaZ4UkktzZuDL2DTzvxe"
 #
+'''

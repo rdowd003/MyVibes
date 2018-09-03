@@ -37,7 +37,7 @@ track_info['labels'] = labels
 AF_with_id['labels'] = labels
 
 
-#RECOMMENDING!
+#RECOMMENDING! - Moved to App.py
 
 '''
 #!!!! Cluster choice Dataframe has been pickled - do not need to uncomment unless to change songs !!!!
