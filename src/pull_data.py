@@ -181,7 +181,6 @@ sp.trace=False
 playlist1 = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9")]
 playlist2 = [("captain25","spotify:user:captain25:playlist:5ESaZ4UkktzZuDL2DTzvxe")]
 
-
 playlist = SpotifyPlaylist()
 df_unclean = playlist.get_data()
 df_clean = CleanData(df_unclean)
@@ -193,16 +192,4 @@ df_unclean2 = playlist.get_data(playlist2)
 df_clean2 = CleanData(df_unclean2)
 audio_feats2,track_info2 = df_clean.features()
 
-'''
-
-
-
-#playlists_to_scrape = [("12160726861", "spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9"),("captain25","spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL"),("captain25","spotify:user:captain25:playlist:5ESaZ4UkktzZuDL2DTzvxe")]
-
-("captain25", "spotify:user:captain25:playlist:45W54xcJIsBnLXpdnsdVRL")
-#spotify:user:12160726861:playlist:6yPiKpy7evrwvZodByKvM9
-'''
-
-"captain25","spotify:user:captain25:playlist:5ESaZ4UkktzZuDL2DTzvxe"
-#
 '''

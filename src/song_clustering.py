@@ -13,6 +13,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.decomposition import PCA
 from pyspark.mllib.clustering import KMeans
+import pickle
 
 
 def standardize(raw_df):
@@ -87,8 +88,7 @@ df.make_df()
 df.add_local_id() #using this to make my own track id, for now (not used  yet)
 AF,track_info = df.features()
 
-'''
-
+REAL DATA PULL
 sp = spotipy.Spotify()
 from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY'), client_secret=os.getenv('SPOTIFY_SECRET_KEY'))
@@ -99,40 +99,43 @@ playlist = SpotifyPlaylist()
 df_unclean = playlist.get_data()
 df_clean = CleanData(df_unclean)
 AF,track_info = df_clean.features()
-popularity = AF.pop('popularity')
-ids = AF.drop('id')
+'''
+
+if __name__ == '__main__':
+    with open('../data/AF_with_id.pkl','rb') as f2:
+        AF = pickle.load(f2)
+
+    #Standardize and Reduce (with PCA) raw audio features
+    AF.drop(columns=['id','labels'])
+    AF_std = standardize(AF)
+    pca,AF_std_reduced = run_pca(AF_std)
+
+    '''
+    #Scree and elbow plot for optimal PC's and optimal number (k) clusters
+    fig,(ax1,ax2) = plt.subplots(2,1,sharey=False,figsize=(10,6))
+    n_comps = AF_std_reduced.shape[1]
+    scree_plot(ax1,pca,n_comps)
+    elbow_plot(ax2,AF_std,1,50,2)
+    plt.tight_layout()
+    plt.show()('../data/elbow_scree.png')
 
 
-#Standardize and Reduce (with PCA) raw audio features
+    # Single K-Means with optimal #PC's and optimal K
+    n_clusters = 10
+    x_df_label,labels,centers = run_optimal_kmeans(AF_std_reduced,n_clusters)
 
-AF_std = standardize(AF)
-pca,AF_std_reduced = run_pca(AF_std)
-
-
-#Scree and elbow plot for optimal PC's and optimal number (k) clusters
-
-fig,(ax1,ax2) = plt.subplots(2,1,sharey=False,figsize=(10,6))
-
-n_comps = AF_std_reduced.shape[1]
-scree_plot(ax1,pca,n_comps)
-elbow_plot(ax2,AF_std,1,50,2)
-plt.tight_layout()
-plt.savefig('../data/elbow_scree.png')
+    AF_std_reduced['labels'] = labels
 
 
 
-# Single K-Means with optimal #PC's and optimal K
-n_clusters = 10
-x_df_label,labels,centers = run_optimal_kmeans(AF_std_reduced,n_clusters)
+    #Plot clusters
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    scatter = ax.scatter(x_df_label.iloc[:,0], x_df_label.iloc[:, 1], c=labels, s=50, cmap='viridis')
+    ax.set_title('Principle Components 1 & 2 Plotted by Cluster (k=10)')
+    ax.set_xlabel('PC1')
+    ax.set_ylabel('PC2')
+    plt.colorbar(scatter)
+    plt.show()
 
-AF_STD_reduced['labels'] = labels
-
-#Plot clusters
-fig = plt.figure()
-ax = fig.add_subplot(111)
-scatter = ax.scatter(AF_STD_reduced[:,0], AF_STD_reduced[:, 1], c=labels, s=50, cmap='viridis')
-ax.set_title('Librosa K-Means Clustering (k=5, n_pc = 6)')
-ax.set_xlabel('PC1')
-ax.set_ylabel('PC2')
-plt.colorbar(scatter)
-plt.show()
+    '''

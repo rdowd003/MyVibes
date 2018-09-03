@@ -16,13 +16,15 @@ from unidecode import unidecode
 
 
 
-#from pull_data import SpotifyPlaylist,CleanData
+#Cluster Samples
 with open('../data/big_popular3.pkl','rb') as f:
     clusters = pickle.load(f)
 
+#Audio features matrix data with labels
 with open('../data/AF_with_id.pkl','rb') as f2:
     AF_with_id = pickle.load(f2)
 
+#Track info matrix with labels
 with open('../data/track_info.pkl','rb') as f3:
     track_info = pickle.load(f3)
 
@@ -82,12 +84,11 @@ def song_recs():
         rec_previews = []
 
         #Pick top 3 songs based on popularity
-
-
         for i in range(3):
             track_ids = np.random.choice(AF_filtered_feature_choice['id'],size=1,replace=False)[0]
             rec_ids.append(track_ids)
             title = list(track_info['name'][track_info['id']== track_ids])[0]
+            title = unidecode(title)
             rec_titles.append(title)
             artist = track_info['artist_name'][track_info['id']== track_ids].iloc[0][0]['name']
             rec_artists.append(artist)
@@ -98,8 +99,6 @@ def song_recs():
 
 
         rec_titles_clean = []
-        for i in rec_titles:
-            rec_titles_clean.append(unidecode(i))
         rec_df = pd.DataFrame(rec_titles,columns=['Song_name'])
         rec_df['Album'] = rec_albums
         rec_df['Artists'] = rec_artists
