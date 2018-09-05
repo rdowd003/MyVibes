@@ -17,7 +17,7 @@ import pickle
 
 
 def standardize(raw_df):
-    scaler = StandardScaler()
+    scaler = StandardScaler(with_mean=True)
     feats_std = scaler.fit_transform(raw_df)
     return feats_std
 
@@ -27,22 +27,22 @@ def run_pca(standardized_features):
     return (pca,X_reduced)
 
 def scree_plot(ax, pca_object, n_components_to_plot,
-title='Explained Variance for n=15 Principle Components'):
+title='Explained Variance for n=15 Principal Components'):
     num_components = pca_object.n_components_
     ind = np.arange(num_components)
     print(ind)
-    vals = pca_object.explained_variance_ratio_
+    vals = (pca_object.explained_variance_ratio_)*100
     print(vals)
     ax.plot(ind, vals, color='blue')
     ax.scatter(ind, vals, color='blue', s=50)
 
     for i in range(num_components):
             ax.annotate(r"{:2.2f}%".format(vals[i]),
-            (ind[i]+0.2, vals[i]+0.005),
+            (ind[i]+0.4, vals[i]+0.01),
             va="bottom",
             ha="center",fontsize=12)
 
-    ax.set_ylim(0, max(vals) + 0.05)
+    ax.set_ylim(0, max(vals) + 5)
     ax.set_xlim(0 - 0.45, n_components_to_plot + 0.45)
     ax.set_xlabel("Principal Component", fontsize=10)
     ax.set_ylabel("Variance Explained (%)", fontsize=12)
@@ -106,25 +106,26 @@ if __name__ == '__main__':
         AF = pickle.load(f2)
 
     #Standardize and Reduce (with PCA) raw audio features
-    AF.drop(columns=['id','labels'])
+    AF.drop(columns=['id','labels'],inplace=True)
     AF_std = standardize(AF)
     pca,AF_std_reduced = run_pca(AF_std)
 
-    '''
+
     #Scree and elbow plot for optimal PC's and optimal number (k) clusters
     fig,(ax1,ax2) = plt.subplots(2,1,sharey=False,figsize=(10,6))
     n_comps = AF_std_reduced.shape[1]
     scree_plot(ax1,pca,n_comps)
-    elbow_plot(ax2,AF_std,1,50,2)
+    elbow_plot(ax2,AF_fake,1,50,2)
     plt.tight_layout()
-    plt.show()('../data/elbow_scree.png')
+    plt.show()#('../data/elbow_scree.png')
+
 
 
     # Single K-Means with optimal #PC's and optimal K
     n_clusters = 10
     x_df_label,labels,centers = run_optimal_kmeans(AF_std_reduced,n_clusters)
 
-    AF_std_reduced['labels'] = labels
+    #AF_std_reduced['labels'] = labels
 
 
 
@@ -132,10 +133,8 @@ if __name__ == '__main__':
     fig = plt.figure()
     ax = fig.add_subplot(111)
     scatter = ax.scatter(x_df_label.iloc[:,0], x_df_label.iloc[:, 1], c=labels, s=50, cmap='viridis')
-    ax.set_title('Principle Components 1 & 2 Plotted by Cluster (k=10)')
+    ax.set_title('Principal Components 1 & 2 Plotted by Cluster (k=10)')
     ax.set_xlabel('PC1')
     ax.set_ylabel('PC2')
     plt.colorbar(scatter)
     plt.show()
-
-    '''

@@ -13,6 +13,7 @@ import numpy as np
 import spotipy
 import os
 from unidecode import unidecode
+from codecs import encode,decode
 
 
 
@@ -88,8 +89,9 @@ def song_recs():
             track_ids = np.random.choice(AF_filtered_feature_choice['id'],size=1,replace=False)[0]
             rec_ids.append(track_ids)
             title = list(track_info['name'][track_info['id']== track_ids])[0]
-            title = unidecode(title)
-            rec_titles.append(title)
+            print(title)
+            title1 = title.encode('ascii','ignore').decode('unicode_escape')
+            rec_titles.append(title1)
             artist = track_info['artist_name'][track_info['id']== track_ids].iloc[0][0]['name']
             rec_artists.append(artist)
             album = track_info['album'][track_info['id'] == track_ids].iloc[0]['name']
