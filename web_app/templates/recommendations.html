@@ -77,14 +77,14 @@
               <a style="color: white" class="nav-link text-uppercase text-expanded" href="products.html">recommendations</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">About me</a>
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <table style="color:white" class="table">
+    <table style="color:white" class="table" align="center">
       <thead>
         <th>Song Name</th>
         <th>Album</th>
@@ -100,16 +100,22 @@
               <td>{{ data['Song_name'][row_index]|tojson|safe }}</td>
               <td>{{ data['Album'][row_index] }}</td>
               <td>{{ data['Artists'][row_index] }}</td>
-              <td><a href={{ data['Preview_link'][row_index] }}>{{ data['Preview_link'][row_index] }}</a></td>
-              <td><a href={{'https://open.spotify.com/search/recent' }}>{{ "Click to search spotify" }}</a></td>
+              <td><a style="color:white" href={{ data['Preview_link'][row_index] }}>click here to preview</a></td>
+              <td><a style="color:white" href={{'https://open.spotify.com/search/recent' }}>Click to search spotify</a></td>
             </tr>
         {% endfor %}
       </tbody>
     </table>
 
+    <div class="intro-button mx-auto">
+      <a class="btn btn-success bg-warning btn-xl" href="products.html#target1">
+        Get new recommendations!</a>
+    </div>
+
     <footer style="text-decoration-color: white" class="bg-info footer text-faded text-center py-5">
       <div class="container">
-        <p style="color: white"class="m-0 small">Robert Dowd, 2018</p>
+        <a class="btn btn-success bg-warning btn-xl" href="products.html#target1">
+          Contact Me!</a>
       </div>
     </footer>
 

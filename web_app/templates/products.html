@@ -77,7 +77,7 @@
               <a style="color: white" class="nav-link text-uppercase text-expanded" href="products.html">recommendations</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">About me</a>
+              <a style="color: white" class="nav-link text-uppercase text-expanded" href="store.html">Contact</a>
             </li>
           </ul>
         </div>
@@ -112,7 +112,7 @@
                       <td>{{ data['cluster_labels'][row_index]|tojson|safe }}</td>
                       <td>{{ data['titles'][row_index] }}</td>
                       <td>{{ data['artists_list'][row_index] }}</td>
-                      <td><a href={{ data['previews'][row_index] }}>{{ data['previews'][row_index] }}</a></td>
+                      <td><a style="color: white;" href={{ data['previews'][row_index] }}>click here to preview</a></td>
                       <td>{{ data['Track_id'][row_index] }}</td>
                     </tr>
                 {% endfor %}
@@ -127,9 +127,11 @@
       </div>
     </section>
 
+
     <section class="page-section about-heading">
       <div class="container">
         <img class="rounded mx-auto d-block" alt="..." src="static/img/brain_waves.jpg">
+        <a name="target1"></a>
         <div class="about-heading-content text-center">
           <div class="row">
             <div class="col-xl-9 col-lg-10 mx-auto">
@@ -200,7 +202,12 @@
 
     <footer style="text-decoration-color: white" class="bg-info footer text-faded text-center py-5">
       <div class="container">
-        <p style="color: white"class="m-0 small">Robert Dowd, 2018</p>
+        <img src="static/img/emaillogo.jpg" height="42" width="52">
+        <a style="color:white;" href="mailto:rdowd003@hotmail.com">Email &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <img src="static/img/linkedin.jpg" height="42" width="52">
+        <a style="color:white;" href="http//www.linkedin/in/rdowd003">Linked In &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        <img src="static/img/github.jpg" height="42" width="52">
+        <a style="color:white;" href="http//www.github.com/rdowd003">Github &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
       </div>
     </footer>
 
