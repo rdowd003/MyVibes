@@ -112,7 +112,7 @@
                 <!-- Here is where the data passed into the template gets inserted -->
                 {% for row_index in range(data['Track_id']|count) %}
                     <tr>
-                      <td>{{ data['cluster_labels'][row_index]|tojson|safe }}</td>
+                      <td>{{ data['cluster_labels'][row_index]|safe }}</td>
                       <td>{{ data['titles'][row_index] }}</td>
                       <td>{{ data['artists_list'][row_index] }}</td>
                       <td><a style="color: white;" href={{ data['previews'][row_index] }}>click here to preview</a></td>
