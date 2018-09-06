@@ -96,10 +96,15 @@
               <h2 class="section-heading mb-0">
                 <span style="font-size: 30px" align="center" class="section-heading-upper">Step 1:</span>
                 <span style="font-size: 40px" align="center" class="section-heading-lower">Experience the clusters</span>
-                <p style="font-size: 15px" class="my_p"> First, click each of the links below, one at a time, and preview all of the the songs.
+              </h2>
+            <div>
+                <p style="color:white; font-size: 15px" class="my_p"> First, click each of the links below, one at a time, and preview all of the the songs.
                   Listen closely, not for your favorite artist, or your favorite song, but for a style, rhythm and sense of musicality that you feel a strong connection with.
                   Either click links to listen, and hit back-page button to continue, or open each link in new web page to listen.
                   Then proceed to the section below to make your choices. </p>
+
+                  <p style="color:white; font-size: 15px" class="my_p">** Note for <b>mobile</b> users: rotate phone for optimal viewing in app </p>
+
               <table class="table">
                 <thead>
                   <th>Cluster Number</th>
@@ -122,7 +127,7 @@
                   {% endfor %}
                 </tbody>
             </table>
-              </h2>
+          </div>
             </div>
           </div>
           <div align="center" class="product-item-description d-flex mr-auto">
@@ -145,6 +150,7 @@
                   <span style="font-size:40px" class="section-heading-lower"> Choose Your preferences</span>
                   <p style="font-size: 15px" class="my_p">Select the cluster and some recommendation preferences below to receive new song recommendations </p>
                 </h2>
+
                 <p class="empty"> </p>
                 <form action='/recommendations', method='POST'>
                   <div><h4><b>Select a cluster:</b></h4></div>
