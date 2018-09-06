@@ -99,27 +99,27 @@
                   Listen closely, not for your favorite artist, or your favorite song, but for a style, rhythm and sense of musicality that you feel a strong connection with.
                   Either click links to listen, and hit back-page button to continue, or open each link in new web page to listen.
                   Then proceed to the section below to make your choices. </p>
-            <table class="table">
-              <thead>
-                <th>Cluster Number</th>
-                <th>Song Name</th>
-                <th>Artist</th>
-                <th>Preview URL</th>
-                <th>Track ID</th>
+              <table class="table">
+                <thead>
+                  <th>Cluster Number</th>
+                  <th>Song Name</th>
+                  <th>Artist</th>
+                  <th>Preview URL</th>
+                  <th>Track ID</th>
 
-              </thead>
-              <tbody>
-                <!-- Here is where the data passed into the template gets inserted -->
-                {% for row_index in range(data['Track_id']|count) %}
-                    <tr>
-                      <td>{{ data['cluster_labels'][row_index]|safe }}</td>
-                      <td>{{ data['titles'][row_index] }}</td>
-                      <td>{{ data['artists_list'][row_index] }}</td>
-                      <td><a style="color: white;" href={{ data['previews'][row_index] }}>click here to preview</a></td>
-                      <td>{{ data['Track_id'][row_index] }}</td>
-                    </tr>
-                {% endfor %}
-              </tbody>
+                </thead>
+                <tbody>
+                  <!-- Here is where the data passed into the template gets inserted -->
+                  {% for row_index in range(data['Track_id']|count) %}
+                      <tr>
+                        <td>{{ data['cluster_labels'][row_index]|safe }}</td>
+                        <td>{{ data['titles'][row_index] }}</td>
+                        <td>{{ data['artists_list'][row_index] }}</td>
+                        <td><a style="color: white;" href={{ data['previews'][row_index] }}>click here to preview</a></td>
+                        <td>{{ data['Track_id'][row_index] }}</td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
             </table>
               </h2>
             </div>
