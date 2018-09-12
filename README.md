@@ -69,7 +69,7 @@ ____
 ec2-52-20-14-87.compute-1.amazonaws.com:8080
 
 Or use the following QR code!
-![QRcode](http://google.com)
+![QRcode](https://github.com/rdowd003/Capstone-3/blob/master/images/frame.png)
 
 
 #### The recommender proceeds as follows:
