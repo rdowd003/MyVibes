@@ -1,5 +1,6 @@
 # MyVibes: A Musical Recommender
 Galvanize 2018 DSI: Final Capstone
+
 [Check it out here!](http://ec2-52-20-14-87.compute-1.amazonaws.com:8080/index.html)
 
 ____
