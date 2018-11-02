@@ -38,7 +38,7 @@ track_info['labels'] = labels
 AF_with_id['labels'] = labels
 
 #AF_with_id.to_pickle('/data/AF_with_id1.pkl')
-#track_info.to_pickle('/data/track_info1.pkl')
+track_info.to_pickle('../data/track_info1.pkl')
 
 '''
 Creating Cluster Samples for Step 1

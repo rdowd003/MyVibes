@@ -27,7 +27,7 @@ with open('../data/AF_with_id.pkl','rb') as f2:
     AF_with_id = pickle.load(f2)
 
 #Track info matrix with labels
-with open('../data/track_info.pkl','rb') as f3:
+with open('../data/track_info1.pkl','rb') as f3:
     track_info = pickle.load(f3)
 
 
