@@ -64,7 +64,7 @@ def song_recs():
     if priority == '':
         return 'You must select an audio feature.'
     else:
-        AF_filtered = AF_with_id[AF_with_id['labels'] == song_pref]
+        AF_filtered = AF_with_id[AF_with_id['labels'] == song_pref-1]
         #AF_filtered.sort_values(by=['popularity'],ascending=False,inplace=True)
         avg_pop = AF_filtered['popularity'].mean()
         avg = AF_filtered[priority].mean()
