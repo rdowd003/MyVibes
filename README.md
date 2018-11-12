@@ -1,11 +1,11 @@
 # MyVibes: A Musical Recommender
 Galvanize 2018 DSI: Final Capstone
 
-[Click here to check it out!](http://ec2-52-20-14-87.compute-1.amazonaws.com:8080/index.html)
+Click here to check it out! --> [Makemyvibes.com](www.makemyvibes.com)
 
 Or if you are viewing this on desktop, use this QR reader to check it out on your phone!
 
-![QR](https://github.com/rdowd003/MyVibes/blob/master/images/frame%20(1).png)
+![QR](https://github.com/rdowd003/MyVibes/blob/master/images/capstoneQR.png)
 
 ____
 ### What is MyVibes?
