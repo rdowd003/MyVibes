@@ -72,10 +72,10 @@ ____
 
 ***To test it yourself visit:***
 
-ec2-52-20-14-87.compute-1.amazonaws.com:8080
+[makemyvibes.com](makemyvibes.com)
 
 Or use the following QR code!
-![QRcode](https://github.com/rdowd003/Capstone-3/blob/master/images/frame.png)
+![QRcode](https://github.com/rdowd003/MyVibes/blob/master/images/capstoneQR.png)
 
 
 #### The recommender proceeds as follows:
