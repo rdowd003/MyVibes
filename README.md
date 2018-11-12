@@ -1,7 +1,7 @@
 # MyVibes: A Musical Recommender
 Galvanize 2018 DSI: Final Capstone
 
-Click here to check it out! --> [Makemyvibes.com](www.makemyvibes.com)
+Click here to check it out! --> [Makemyvibes.com](http://www.makemyvibes.com)
 
 Or if you are viewing this on desktop, use this QR reader to check it out on your phone!
 
@@ -72,7 +72,7 @@ ____
 
 ***To test it yourself visit:***
 
-[makemyvibes.com](makemyvibes.com)
+[makemyvibes.com](http://wwww.makemyvibes.com)
 
 Or use the following QR code!
 ![QRcode](https://github.com/rdowd003/MyVibes/blob/master/images/capstoneQR.png)
