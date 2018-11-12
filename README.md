@@ -72,7 +72,7 @@ ____
 
 ***To test it yourself visit:***
 
-[makemyvibes.com](http://wwww.makemyvibes.com)
+[makemyvibes.com](http://www.makemyvibes.com)
 
 Or use the following QR code!
 ![QRcode](https://github.com/rdowd003/MyVibes/blob/master/images/capstoneQR.png)
